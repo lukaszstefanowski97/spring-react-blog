@@ -22,7 +22,7 @@ import static com.example.blog.config.Messages.*;
 @Slf4j
 public class ApiController {
 
-    InputValidation inputValidation = new InputValidationImpl();
+    private InputValidation inputValidation = new InputValidationImpl();
 
     @Autowired
     GetPostService getPostService;
