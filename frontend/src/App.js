@@ -9,7 +9,7 @@ class App extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = [];
+        this.state = {};
     }
 
     render() {
@@ -25,17 +25,12 @@ class App extends React.Component {
             </div>
         )
     }
-}
 
-function getPosts() {
-    axios.get('http://localhost:8080/api/getPosts', {})
-        .then(function (response) {
-            console.log(response);
-            console.log('Getting list of posts...');
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
+    async componentDidMount() {
+        let posts = await axios.get('http://localhost:8080/api/getPosts', {});
+        this.setState(posts.data);
+
+    }
 }
 
 export default App;
