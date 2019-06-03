@@ -15,7 +15,7 @@ public class UpdatePostServiceImpl implements UpdatePostService {
     private PostRepository postRepository;
 
     @Override
-    public void updatePostById(Long id, String newContent) {
+    public Boolean updatePostById(Long id, String newContent) {
         if (postRepository.existsById(id)) {
             Post post = postRepository.getOne(id);
             postRepository.deleteById(id);
@@ -24,6 +24,8 @@ public class UpdatePostServiceImpl implements UpdatePostService {
             post.setContent(newContent);
             post.setDateLastModified(date.toString());
             postRepository.save(post);
+            return true;
         }
+        return false;
     }
 }

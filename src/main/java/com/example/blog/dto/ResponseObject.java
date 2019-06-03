@@ -7,13 +7,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ResponseObject {
 
     @JsonProperty("status_code")
-    Integer statusCode;
+    private Integer statusCode;
 
     @JsonProperty("message")
-    String message;
+    private String message;
 
     @JsonProperty("additional_info")
-    String additionalInfo;
+    private String additionalInfo;
 
     public ResponseObject(Integer statusCode, String message, String additionalInfo) {
         this.statusCode = statusCode;
