@@ -1,1 +1,1 @@
-# java-blog
+# spring-react blog

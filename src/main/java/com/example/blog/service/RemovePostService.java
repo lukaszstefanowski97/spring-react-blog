@@ -4,5 +4,5 @@ public interface RemovePostService {
 
     void removeAllPosts();
 
-    void removePostById(Long id);
+    Boolean removePostById(Long id);
 }

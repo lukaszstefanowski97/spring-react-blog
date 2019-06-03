@@ -17,9 +17,11 @@ public class RemovePostServiceImpl implements RemovePostService {
     }
 
     @Override
-    public void removePostById(Long id) {
+    public Boolean removePostById(Long id) {
         if (postRepository.existsById(id)) {
             postRepository.deleteById(id);
+            return true;
         }
+        return false;
     }
 }
