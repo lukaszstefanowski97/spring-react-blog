@@ -81,7 +81,7 @@ public class ApiController {
     @RequestMapping(method = RequestMethod.PUT, value = "/updatePost/{id}")
     public ResponseObject updatePost(@RequestBody Post post, @PathVariable Long id) {
         if (updatePostService.updatePostById(id, post.getContent())) {
-            log.info("Post with id: " + id + "hase been updated.\n\n" + "Author: " + post.getAuthor()
+            log.info("Post with id: " + id + "has been updated.\n\n" + "Author: " + post.getAuthor()
                     + "\nContent: " + post.getContent());
             return new ResponseObject(200, STATUS_OK, POST_UPDATED);
         }
@@ -92,6 +92,7 @@ public class ApiController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/deletePosts")
     public ResponseObject deleteAllPosts() {
         removePostService.removeAllPosts();
+        entries = 0;
         return new ResponseObject(200, STATUS_OK, POSTS_REMOVED);
     }
 
@@ -99,6 +100,7 @@ public class ApiController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/deletePosts/{id}")
     public ResponseObject deletePostById(@PathVariable Long id) {
         if (removePostService.removePostById(id)) {
+            --entries;
             return new ResponseObject(200, STATUS_OK, POST_REMOVED);
         } else {
             return new ResponseObject(404, STATUS_NOT_FOUND, POST_NOT_FOUND);
