@@ -81,8 +81,7 @@ public class ApiController {
     @RequestMapping(method = RequestMethod.PUT, value = "/updatePost/{id}")
     public ResponseObject updatePost(@RequestBody Post post, @PathVariable Long id) {
         if (updatePostService.updatePostById(id, post.getContent())) {
-            log.info("Post with id: " + id + "has been updated.\n\n" + "Author: " + post.getAuthor()
-                    + "\nContent: " + post.getContent());
+            log.info("Post with id: " + id + " has been updated.\n\n" + "New content: " + post.getContent());
             return new ResponseObject(200, STATUS_OK, POST_UPDATED);
         }
         return new ResponseObject(404, STATUS_NOT_FOUND, POST_NOT_FOUND);
