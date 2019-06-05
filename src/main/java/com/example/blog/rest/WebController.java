@@ -88,11 +88,11 @@ public class WebController {
         model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
         model.addAttribute("noContent", Messages.NO_RECORDS);
         model.addAttribute("post", new Post());
+        model.addAttribute("posts", getPostService.getAllPosts());
 
         if (id == null || !updatePostService.updatePostById(id, content)) {
             model.addAttribute("updateMessage", POST_NOT_FOUND);
             model.addAttribute("post", new Post());
-            model.addAttribute("posts", getPostService.getAllPosts());
             return "posts";
         } else if (updatePostService.updatePostById(id, content)) {
             updatePostService.updatePostById(id, content);

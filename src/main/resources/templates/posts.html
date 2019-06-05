@@ -31,20 +31,20 @@
         <div th:if="${not #lists.isEmpty(posts)}">
             <table class="table table-striped">
                 <tr>
-                    <th>Author</th>
-                    <th>Date created</th>
-                    <th>Date last modified</th>
-                    <th>Content</th>
-                    <th>Remove</th>
-                    <th>ID</th>
+                    <th style="text-align: center;">Author</th>
+                    <th style="text-align: center;">Date created</th>
+                    <th style="text-align: center;">Date last modified</th>
+                    <th style="text-align: center;">Content</th>
+                    <th style="text-align: center;">Remove</th>
+                    <th style="text-align: center;">ID</th>
                 </tr>
                 <tr th:each="post : ${posts}">
 
-                    <td th:text="${post.author}"></td>
-                    <td th:text="${post.dateCreated}"></td>
-                    <td th:text="${post.dateLastModified}"></td>
-                    <td th:text="${post.content}"></td>
-                    <td>
+                    <td style="text-align: center;" th:text="${post.author}"></td>
+                    <td style="text-align: center;" th:text="${post.dateCreated}"></td>
+                    <td style="text-align: center;" th:text="${post.dateLastModified}"></td>
+                    <td style="text-align: center;" th:text="${post.content}"></td>
+                    <td style="text-align: center;">
                         <form action="#" th:action="@{'/deletePosts/{id}'(id=${post.id})}" th:method="delete">
                             <input type="hidden" name="_method" value="delete"/>
                             <button type="submit" id="submitButton"><i class="fa fa-trash"></i></button>
@@ -58,15 +58,13 @@
 </div>
 <h3 style="text-align: center;">Add new post</h3>
 
-<form method="post" style="text-align: center;" th:object="${posts}" th:action="@{/savePost}">
+<form method="post"   th:object="${posts}" th:action="@{/savePost}">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="inputAuthor">Author</label>
             <input type="text" class="form-control" id="inputAuthor" placeholder="Author"
                    th:field="${post.author}"/>
         </div>
         <div class="form-group col-md-6">
-            <label for="inputContent">Content</label>
             <input type="text" class="form-control" id="inputContent" placeholder="Content"
                    th:field="${post.content}"/>
         </div>
@@ -74,7 +72,9 @@
     <div style="text-align: center;">
         <p th:text="${message}"/>
     </div>
-    <button style="text-align: center;" type="submit" class="btn btn-dark">Add post</button>
+    <div style="text-align: center;">
+        <button id="saveButton" type="submit" class="btn btn-dark">Add post</button>
+    </div>
 </form>
 </div>
 <h3 style="text-align: center;">Edit post by ID</h3>
