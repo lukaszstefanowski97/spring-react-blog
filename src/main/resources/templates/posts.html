@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <div class="jumbotron">
         <center>
             <h1 th:text="${helloMessage}"/>
@@ -35,6 +36,7 @@
                     <th>Date last modified</th>
                     <th>Content</th>
                     <th>Remove</th>
+                    <th>ID</th>
                 </tr>
                 <tr th:each="post : ${posts}">
 
@@ -45,34 +47,54 @@
                     <td>
                         <form action="#" th:action="@{'/deletePosts/{id}'(id=${post.id})}" th:method="delete">
                             <input type="hidden" name="_method" value="delete"/>
-                            <button type="submit" id="submitButton"></button>
+                            <button type="submit" id="submitButton"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
+                    <td th:text="${post.id}"></td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
-    <form method="post" th:object="${posts}" th:action="@{/savePost}">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputAuthor">Author</label>
-                <input type="text" class="form-control" id="inputAuthor" placeholder="Author"
-                       th:field="${post.author}"></input>
-            </div>
-            <div class="form-group col-md-6">
-                <label for="inputContent">Content</label>
-                <input type="text" class="form-control" id="inputContent" placeholder="Content"
-                       th:field="${post.content}"></input>
-            </div>
-            <div style="text-align: center;">
-                <p th:text="${message}"/>
-            </div>
-            <div style="text-align: center;">
-                <button type="submit" class="btn btn-dark">Add post</button>
-            </div>
+<h3>Add new post</h3>
+
+<form method="post" th:object="${posts}" th:action="@{/savePost}">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="inputAuthor">Author</label>
+            <input type="text" class="form-control" id="inputAuthor" placeholder="Author"
+                   th:field="${post.author}"/>
         </div>
-    </form>
+        <div class="form-group col-md-6">
+            <label for="inputContent">Content</label>
+            <input type="text" class="form-control" id="inputContent" placeholder="Content"
+                   th:field="${post.content}"/>
+        </div>
+        <div style="text-align: center;">
+            <p th:text="${message}"/>
+        </div>
+        <div style="text-align: center;">
+            <button type="submit" class="btn btn-dark">Add post</button>
+        </div>
+    </div>
+</form>
+</div>
+<h3>Edit post by ID</h3>
+</div>
+<form action="#" th:action="@{'/updatePosts/{id}'(id=${post.id})}"  th:object="${posts}" th:method="put">
+    <div class="form-group col-md-6">
+        <label for="inputID">ID</label>
+        <input type="number" class="form-control" id="inputID" placeholder="ID"
+               th:field="${post.id}"/>
+    </div>
+    <div class="form-group col-md-6">
+        <label for="inputContent2">Content</label>
+        <input type="text" class="form-control" id="inputContent2" placeholder="New content"
+               th:field="${post.content}"/>
+    </div>
+    <button type="submit" id="updateButton">Update post</button>
+    <p th:text="${updateMessage}"/>
+</form>
 </div>
 
 <!--Optional JavaScript-->
