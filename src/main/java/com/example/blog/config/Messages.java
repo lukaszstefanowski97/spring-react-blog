@@ -2,6 +2,8 @@ package com.example.blog.config;
 
 public class Messages {
 
+    public static final String HELLO_MESSAGE = "Java Blog";
+
     public static final String POST_NOT_FOUND = "There is no post with given ID.";
 
     public static final String NO_RECORDS = "Post repository is empty.";
@@ -25,4 +27,6 @@ public class Messages {
     public static final String INVALID_AUTHOR_MESSAGE = "Invalid author name. It has to be at least 3 characters long.";
 
     public static final String INVALID_CONTENT_MESSAGE = "Invalid content. It has to be at least 2 characters long. ";
+
+    public static final String INVALID_INPUT = "Invalid input, please try again.";
 }

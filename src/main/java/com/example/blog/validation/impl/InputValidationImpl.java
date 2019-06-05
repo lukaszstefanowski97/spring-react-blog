@@ -1,7 +1,9 @@
 package com.example.blog.validation.impl;
 
 import com.example.blog.validation.InputValidation;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InputValidationImpl implements InputValidation {
 
     @Override
