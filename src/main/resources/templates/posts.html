@@ -22,7 +22,7 @@
             <table class="table table-striped">
                 <tr>
                     <th>
-                        <center><h3 th:text="${noContent}"/></center>
+                        <div style="text-align: center;"><h3 th:text="${noContent}"/></div>
                     </th>
                 </tr>
             </table>
@@ -65,12 +65,12 @@
                 <input type="text" class="form-control" id="inputContent" placeholder="Content"
                        th:field="${post.content}"></input>
             </div>
-            <center>
+            <div style="text-align: center;">
                 <p th:text="${message}"/>
-            </center>
-            <center>
+            </div>
+            <div style="text-align: center;">
                 <button type="submit" class="btn btn-dark">Add post</button>
-            </center>
+            </div>
         </div>
     </form>
 </div>
