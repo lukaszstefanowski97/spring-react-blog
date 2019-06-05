@@ -16,6 +16,7 @@ public class UpdatePostServiceImpl implements UpdatePostService {
 
     @Override
     public Boolean updatePostById(Long id, String newContent) {
+        if (id == null) return false;
         if (postRepository.existsById(id)) {
             Post post = postRepository.getOne(id);
             postRepository.deleteById(id);
