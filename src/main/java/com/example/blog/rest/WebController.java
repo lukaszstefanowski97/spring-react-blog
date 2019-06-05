@@ -85,7 +85,6 @@ public class WebController {
 
     @RequestMapping(method = RequestMethod.PUT, value = "/updatePosts")
     public String updatePost(String content, Long id, Model model) {
-        model.addAttribute("message", POST_SAVED);
         model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
         model.addAttribute("noContent", Messages.NO_RECORDS);
         model.addAttribute("post", new Post());
