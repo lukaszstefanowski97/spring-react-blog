@@ -98,4 +98,15 @@ public class WebController {
         model.addAttribute("updateMessage", POST_NOT_FOUND);
         return "posts";
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteAll")
+    public String removeAll(Model model) {
+        model.addAttribute("message", POST_SAVED);
+        model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
+        model.addAttribute("noContent", Messages.NO_RECORDS);
+        model.addAttribute("post", new Post());
+        removePostService.removeAllPosts();
+        model.addAttribute("posts", getPostService.getAllPosts());
+        return "posts";
+    }
 }

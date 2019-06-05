@@ -92,9 +92,15 @@
         <input type="text" class="form-control" id="inputContent2" placeholder="New content"
                th:field="${post.content}"/>
     </div>
-    <button type="submit" id="updateButton">Update post</button>
+    <button type="submit" id="updateButton" class="btn btn-dark">Update post</button>
     <p th:text="${updateMessage}"/>
 </form>
+<div>
+    <form action="#" th:action="@{/deleteAll}" th:method="delete">
+        <input type="hidden" name="_method" value="delete"/>
+        <button class="btn btn-dark"><i class="fa fa-trash"></i> Remove all</button>
+    </form>
+</div>
 </div>
 
 <!--Optional JavaScript-->
