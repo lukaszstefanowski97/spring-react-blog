@@ -66,22 +66,19 @@ public class WebController {
     @RequestMapping(method = RequestMethod.POST, value = "/savePost")
     public String savePost(Post post, Model model) {
         String message = "";
+        model.addAttribute("message", INVALID_INPUT);
+        model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
+        model.addAttribute("noContent", Messages.NO_RECORDS);
+        model.addAttribute("posts", getPostService.getAllPosts());
         if (!inputValidation.validateAuthor(post.getAuthor()) || !inputValidation.validateContent(post.getContent())) {
-            model.addAttribute("message", INVALID_INPUT);
-            model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
-            model.addAttribute("noContent", Messages.NO_RECORDS);
-            model.addAttribute("posts", getPostService.getAllPosts());
             model.addAttribute("post", new Post());
             return "posts";
         }
         ++entries;
         message = "Saved new item to repository:\n\nAuthor: " + post.getAuthor() + "\nContent: " + post.getContent();
         log.info(message);
-        model.addAttribute("message", POST_SAVED);
         savePostService.savePostToRepository(post.getAuthor(), post.getContent());
         model.addAttribute("posts", getPostService.getAllPosts());
-        model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
-        model.addAttribute("noContent", Messages.NO_RECORDS);
         return "posts";
     }
 
