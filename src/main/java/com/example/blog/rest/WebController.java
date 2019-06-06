@@ -70,6 +70,8 @@ public class WebController {
             model.addAttribute("message", INVALID_INPUT);
             model.addAttribute("helloMessage", Messages.HELLO_MESSAGE);
             model.addAttribute("noContent", Messages.NO_RECORDS);
+            model.addAttribute("posts", getPostService.getAllPosts());
+            model.addAttribute("post", new Post());
             return "posts";
         }
         ++entries;
